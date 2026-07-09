@@ -10,7 +10,15 @@ import CoreLocation
 
 final class LocationService: NSObject, LocationTrackingUseCase {
     private let manager = CLLocationManager()
-
+    
+    func requestAuthorization() {
+        
+    }
+    
+    func authorizationUpdates() -> AsyncStream<LocationAuthorization> {
+        AsyncStream { _ in }
+    }
+    
     func start() -> AsyncStream<TrackedLocation> {
         AsyncStream { _ in }
     }

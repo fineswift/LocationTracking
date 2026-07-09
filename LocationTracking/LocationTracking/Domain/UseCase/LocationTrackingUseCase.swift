@@ -8,6 +8,8 @@
 import Foundation
 
 protocol LocationTrackingUseCase {
+    func requestAuthorization()
+    func authorizationUpdates() -> AsyncStream<LocationAuthorization>
     func start() -> AsyncStream<TrackedLocation>
     func stop()
 }
