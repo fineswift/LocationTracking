@@ -11,4 +11,5 @@ struct TrackedLocation: Equatable {
     let latitude: Double
     let longitude: Double
     let timestamp: Date
+    let activity: String
 }
