@@ -9,10 +9,15 @@ import Foundation
 import CoreLocation
 
 final class LocationService: NSObject, LocationTrackingUseCase {
+    
     private let manager = CLLocationManager()
     
     private var authContinuation: AsyncStream<LocationAuthorization>.Continuation?
     private var locationContinuation: AsyncStream<TrackedLocation>.Continuation?
+    
+    var currentAuthorizationSuatus: LocationAuthorization {
+        mapAuthorizationStatus(manager.authorizationStatus)
+    }
     
     override init() {
         super.init()
@@ -23,7 +28,7 @@ final class LocationService: NSObject, LocationTrackingUseCase {
     }
     
     func requestAuthorization() {
-        manager.requestAlwaysAuthorization()
+        manager.requestWhenInUseAuthorization()
     }
     
     func authorizationUpdates() -> AsyncStream<LocationAuthorization> {

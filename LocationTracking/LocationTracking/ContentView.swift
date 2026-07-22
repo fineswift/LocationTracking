@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var onboardingViewModel = OnboardingViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            if onboardingViewModel.authorizationStatus == .authorizedAlways {
+                MainView()
+            } else {
+                OnboardingView(viewModel: $onboardingViewModel)
+            }
         }
-        .padding()
     }
 }
 

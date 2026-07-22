@@ -6,10 +6,15 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct TrackedLocation: Equatable {
     let latitude: Double
     let longitude: Double
     let timestamp: Date
     let activity: String
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
 }
